@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Roster</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="modal">
+        <div class="modal-content">
+        </div>
+    </div>
+    <script id="playersStats-template" type="text/x-handlebars-template">
+        {{#if this.length}}
+            {{#each this}}
+                <span class="close">&times;</span>
+                <p id="modal_text">
+                    {{#if name}}
+                        My name is <b>{{name}}</b> from "<u>{{team_name}}</u>" team ({{team_acronym}}).
+                        <br>
+                        I have played {{games_played}} games, {{minutes_per_game}} minutes per game.
+                        <br><br>
+                        Field goals attempted per game: {{field_goals_attempted_per_game}}.
+                        <br>
+                        Field goals made per game: {{field_goals_made_per_game}}.
+                        <br>
+                        Field goal percentage: {{field_goal_percentage}}.
+                        <br>
+                        Free throw percentage: {{free_throw_percentage}}.
+                        <br>
+                        Three point attempted per game: {{three_point_attempted_per_game}}.
+                        <br>
+                        Three point made per game: {{three_point_made_per_game}}.
+                        <br>
+                        Three point percentage: {{three_point_percentage}}.
+                        <br>
+                        Points per game: {{points_per_game}}.
+                        <br>
+                        Offensive rebounds per game: {{offensive_rebounds_per_game}}.
+                        <br>
+                        Defensive rebounds per game: {{defensive_rebounds_per_game}}.
+                        <br>
+                        Rebounds per game: {{rebounds_per_game}}.
+                        <br>
+                        Assists per game: {{assists_per_game}}.
+                        <br>
+                        Steals per game: {{steals_per_game}}.
+                        <br>
+                        Blocks per game: {{blocks_per_game}}.
+                        <br>
+                        Turnovers per game: {{turnovers_per_game}}.
+                        <br>
+                        Player efficiency rating: {{player_efficiency_rating}}.
+                    {{else}}
+                        Sorry, but we do not have any more info about this selected player.
+                    {{/if}}
+                </p>
+            {{/each}}
+        {{/if}}
+    </script>
+
+    <script id="playersData-template" type="text/x-handlebars-template">
+        {{#if this.length}}
+            {{#each this}}
+                <div>
+                    <figure class="card">
+                        <div class="image"><img src="https://nba-players.herokuapp.com/players/{{lastName}}/{{firstName}}" onerror="this.onerror=null; this.src='images/default-avatar.png';" title="{{firstName}} {{lastName}}" alt="{{firstName}} {{lastName}}" onclick="showStats(this);"></div>
+                        <figcaption>
+                            <div class="info">
+                                <span>{{jersey}}</span>
+                                <span class="pos">{{pos}}</span>
+                            </div>
+                            <h3>{{firstName}} {{lastName}}</h3>
+                        </figcaption>
+                    </figure>
+                </div>
+            {{/each}}
+        {{else}}
+                {{alert "Sorry, no results found."}}
+        {{/if}}
+    </script>
+
+    <div class="grid-container">
+        <div class="header">
+            <input type="text" id="txt_search" placeholder="Input team name: (eg: lakers / warriors / heat / suns)">
+            <button id="btn_roster">Get Roster</button>
+        </div>
+        <div class="content"></div>
+    </div>
+</body>
+
+</html>
