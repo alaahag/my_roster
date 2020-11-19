@@ -9,14 +9,14 @@ body {
     grid-template-rows: max-content 1fr;
     gap: 20px 10px;
     grid-template-areas:
-        "header"
-        "content";
+    "header"
+    "content";
 }
 
 .header {
     grid-area: header;
     display: grid;
-    grid-template-columns: 10fr 1fr;
+    grid-template-columns: 10fr 1fr 1fr;
 }
 
 .content {
@@ -27,24 +27,66 @@ body {
     justify-items: center;
 }
 
-#btn_roster {
-    font-family: monospace;
-    font-weight: bolder;
-    color: honeydew;
-    margin-left: 14px;
+#btn_roster, #btn_dream_team {
+    font-family: 'Squada One', cursive;
+    letter-spacing: 2px;
     padding: 13px;
+    font-size: 23px;
+    box-shadow: 4px 3px 8px #000000;
+    border-color:white;
+    cursor: pointer;
+    width: 160px;
+    text-transform: uppercase;
+}
+
+#btn_add_remove_dream_team {
+    font-family: 'Acme', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 15px;
     font-size: 21px;
-    background-color: #45aaf2;
     box-shadow: 4px 3px 8px #000000;
     cursor: pointer;
-    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+#btn_roster {
+    background-color: #45aaf2;
+}
+
+#btn_roster, #btn_dream_team {
+    margin-left: 14px;
+    color: ghostwhite;
+}
+
+.add_dream_color, .remove_dream_color {
+    color: cornsilk;
+}
+
+.add_dream_color {
+    background-color: darkslategrey;
+}
+
+.remove_dream_color {
+    background-color: crimson;
+}
+
+#btn_dream_team {
+    background-color: lightseagreen;
+}
+
+#btn_add_remove_dream_team {
+    margin-left: -4px;
 }
 
 #txt_search {
     padding: 15px;
-    font-size: 18px;
+    font-size: 20px;
     border-style: solid none;
     box-shadow: 4px 3px 8px #000000;
+    font-family: 'Acme', sans-serif;
+    border-color:white;
 }
 
 .image {
@@ -169,20 +211,25 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
+    font-family: 'Acme', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
     background-color: beige;
-    margin: 15% auto;
+    margin: 4% auto;
     padding: 20px;
     border: 3px solid #fc5c65;
     width: 40%;
     border-radius: 4px 4px;
     font-size: 20px;
+    line-height: 1.4;
 }
 
 .close {
-    color: #aaa;
+    color: red;
     float: right;
-    font-size: 28px;
+    font-size: 44px;
     font-weight: bold;
+    text-shadow: 1px 1px 1px black;
 }
 
 .close:hover,
